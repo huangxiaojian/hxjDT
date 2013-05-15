@@ -142,6 +142,7 @@ void __dt_ResolveTriangleCorres_e(
     const dtMeshModel *deformed_source, const dtMeshModel *target, 
     __dt_TriangleCorrsList *tclist)
 {
+	//find the boundingbox
     dt_real_type 
         threshold_src = __select_triangle_corrs_threshold(deformed_source),
         threshold_tgt = __select_triangle_corrs_threshold(target);

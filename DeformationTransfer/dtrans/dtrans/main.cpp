@@ -14,21 +14,38 @@ int main(int argc, char *argv[])
 {
     dtTransformer trans;
     dtMeshModel source_deformed;
-
+#ifdef _DEBUG
+	const char 
+		*source_ref = "horse_ref.obj",  /* source reference model */
+		*target_ref = "camel_ref.obj",  /* target reference model */
+		*tricorrs = "out.tricorrs";  /* vertex constraints specified with Corres!
+											 */
+	//char str[] = "horse-0.obj";
+	char src_deformed[][FILENAME_MAX] = {"horse-0.obj"};
+#else
     const char 
         *source_ref = argv[1],  /* filename of source reference model */
         *target_ref = argv[2],  /* filename of target reference model */
         *tricorrs   = argv[3];  /* filename of triangle correspondence */
 
-    char **src_deformed = &argv[4]; /* deformed source mesh filenames */
+	char **src_deformed = &argv[4]; /* deformed source mesh filenames */
+#endif
+    
 
     /* number of deformed source model files specified in command line */
+#ifdef _DEBUG
+	dt_size_type n_deformed_source = 1;
+#else
     dt_size_type n_deformed_source = argc - 4;
+#endif
     dt_index_type i_source = 0;
 
     char deformed_mesh_name[FILENAME_MAX];  /* deformed target mesh filename */
-
+#ifdef _DEBUG
+	if(1)
+#else
     if (argc > 3)
+#endif
     {
         __dt_CHOLMOD_start();
 

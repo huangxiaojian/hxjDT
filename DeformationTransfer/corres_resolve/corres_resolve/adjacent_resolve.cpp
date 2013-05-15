@@ -290,7 +290,12 @@ void __dt_ResolveMeshAdjacencies(
 
         /* fill -1 to the rest mem */
         while (i_adj != 3)
-            adjlist->adjacency[i_triangle].i_adjtriangle[i_adj++] = -1;
+			//有裂缝的，或者边界处三角形的index为-1
+        {
+			//printf("i_adj != 3, adj = %d", i_adj);
+			//getchar();
+			adjlist->adjacency[i_triangle].i_adjtriangle[i_adj++] = -1;
+		}
     }
 
     adjlist->n_adjacency = n_adjacency;

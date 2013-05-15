@@ -160,7 +160,7 @@ void __dt_CreateElementaryTermList(
 
     /* precalculate all elementary terms of triangle units */
     for (i_triangle = 0; i_triangle < source_model->n_triangle; i_triangle++)
-    {
+    {//here
         __dt_CalculateElementaryTerm(source_model, target_model, 
             conslist, vtilist, sinvlist, i_triangle, 
             m_list[i_triangle], c_list[i_triangle]);
